@@ -28,6 +28,8 @@ int main(int argc, char * const *argv)
     while ((dat = getopt(argc, argv, "n:em")) != -1){
         switch (dat)
         {
+
+        //Caso principal, donde el usuario insertó n números
         case 'n':
             numberVal = optarg;
 
@@ -35,23 +37,17 @@ int main(int argc, char * const *argv)
 
             break;
         
+        //En caso que el usuario quiera ver el manual de uso del programa
         case 'm':
             itSup = 1;
             break;
 
+        //Valor de prueba, para asegurarme que funcionara con mas de dos 'flags'
         case 'e':
             easter_egg();
             break;
 
-        //En caso que opterr marque un error
-        case '?':
-            if (/* condition */)
-            {
-                /* code */
-            }
-            
-            break;
-
+        //Para la ejecución del programa
         default:
             abort();
             break;
