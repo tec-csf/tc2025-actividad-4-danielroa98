@@ -8,7 +8,8 @@
  *  Páginas de soporte:
  *  https://www.gnu.org/software/libc/manual/html_node/Using-Getopt.html
  *  http://www.cplusplus.com/reference/cstdlib/atoi/
- * 
+ *
+ *  Hecho en conjunto con Sergio Hernández 
  */
 #include <ctype.h>
 #include <stdio.h>
@@ -77,7 +78,6 @@ int main(int argc, char * const *argv)
             
             }
             
-            
             break;
 
         //Para la ejecución del programa
@@ -101,7 +101,6 @@ int main(int argc, char * const *argv)
             printf("Se alcanzaron a crear %d procesos hijos.", contChildren);
         }else if(pid == 0){
             //Dentro del proceso hijo
-            //printf("El proceso hijo es %d y su padre es %d\n", getpid(), getppid());
 
             int top = getppid();
             int bot = getpid();
@@ -114,7 +113,6 @@ int main(int argc, char * const *argv)
 
         }else{
             //Dentro del proceso padre
-            //printf("\nDentro del proceso padre\n");
             contChildren+=1;
         }
         ++contGlobal;
@@ -127,25 +125,6 @@ int main(int argc, char * const *argv)
     procDat *fin = proc + convNumber;
     procDat *helper = proc;
     procDat *cont = proc;
-
-    /* for (; helper < fin; ++helper){
-        
-        for (; contProcs < procsTot; ++contProcs){
-
-            if (waitpid(*contProcs, &index, 0) != -1){
-
-                if(WIFEXITED(index)){
-
-                    helper->childP = *contProcs;
-                    helper->avg = WEXITSTATUS(index);
-                    
-                }
-
-            }
-
-        }
-
-    } */
 
     while ((helper < fin) && (contProcs < procsTot)){
 
@@ -195,6 +174,9 @@ int main(int argc, char * const *argv)
         instruction();
 
     }
+
+    free(proc);
+    free(procs);
 
     return 0;
 }
